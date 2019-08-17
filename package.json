@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Sebastian Schocke",
+    "start": "node app.js",
+    "author": "Leonardo Giovanni",
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.19.0",
