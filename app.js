@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 
+var port = process.env.PORT || 3000;
+
 var TODOS = [
     { 'id': 1, 'user_id': 1, 'name': "Get Milk", 'completed': false },
     { 'id': 2, 'user_id': 1, 'name': "Fetch Kids", 'completed': true },
@@ -50,8 +52,8 @@ app.get('/api/users', function (req, res) {
     res.send(getUsers());
 });
 
-app.listen(4000, function () {
-    console.log('Angular JWT Todo API Server listening on port 4000!')
+app.listen(port, function () {
+    console.log('Angular JWT Todo API Server listening on port: ' + port)
 });
 
 //app.use(bodyParser.json());
