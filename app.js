@@ -35,6 +35,8 @@ function getUsers() {
     return USERS;
 }
 
+app.use(bodyParser.json());
+app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/api/auth']}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 app.get('/', function (req, res) {
@@ -55,9 +57,6 @@ app.get('/api/users', function (req, res) {
     res.type("json");
     res.send(getUsers());
 });
-
-app.use(bodyParser.json());
-app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/api/auth']}));
 
 app.post('/api/auth', function(req, res) {
   const body = req.body;
