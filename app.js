@@ -56,11 +56,7 @@ app.get('/api/users', function (req, res) {
     res.send(getUsers());
 });
 
-app.listen(port, function () {
-    console.log('Angular JWT Todo API Server listening on port: ' + port)
-});
-
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/api/auth']}));
 
 app.post('/api/auth', function(req, res) {
@@ -71,4 +67,8 @@ app.post('/api/auth', function(req, res) {
   
   var token = jwt.sign({userID: user.id}, 'todo-app-super-shared-secret', {expiresIn: '2h'});
   res.send({token});
+});
+
+app.listen(port, function () {
+    console.log('Angular JWT Todo API Server listening on port: ' + port)
 });
