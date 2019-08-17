@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 
 var port = process.env.PORT || 3000;
+var favicon = require('serve-favicon')
+var path = require('path')
 
 var TODOS = [
     { 'id': 1, 'user_id': 1, 'name': "Get Milk", 'completed': false },
@@ -32,6 +34,8 @@ function getTodo(todoID) {
 function getUsers() {
     return USERS;
 }
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 app.get('/', function (req, res) {
     res.send('Angular JWT Todo API Server')
