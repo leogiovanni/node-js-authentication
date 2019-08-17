@@ -12,9 +12,10 @@ var TODOS = [
     { 'id': 4, 'user_id': 3, 'name': "Finish Angular JWT Todo App", 'completed': false },
 ];
 var USERS = [
-    { 'id': 1, 'username': 'jemma' },
-    { 'id': 2, 'username': 'paul' },
-    { 'id': 3, 'username': 'sebastian' },
+    { 'id': 1, 'username': 'jemma@email.com' },
+    { 'id': 2, 'username': 'paul@email.com' },
+    { 'id': 3, 'username': 'sebastian@email.com' },
+    { 'id': 4, 'username': 'leo@email.com' },
 ];
 function getTodos(userID) {
     var todos = _.filter(TODOS, ['user_id', userID]);
@@ -60,7 +61,7 @@ app.post('/api/auth', function(req, res) {
   const body = req.body;
 
   const user = USERS.find(user => user.username == body.username);
-  if(!user || body.password != 'todo') return res.sendStatus(401);
+  if(!user || body.password != '12345678') return res.sendStatus(401);
   
   var token = jwt.sign({userID: user.id}, 'todo-app-super-shared-secret', {expiresIn: '2h'});
   res.send({token});
