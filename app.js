@@ -14,7 +14,8 @@ var TODOS = [
     { 'id': 1, 'user_id': 1, 'name': "Get Milk", 'completed': false },
     { 'id': 2, 'user_id': 1, 'name': "Fetch Kids", 'completed': true },
     { 'id': 3, 'user_id': 2, 'name': "Buy flowers for wife", 'completed': false },
-    { 'id': 4, 'user_id': 3, 'name': "Finish Angular JWT Todo App", 'completed': false },
+    { 'id': 4, 'user_id': 3, 'name': "Finish Angular JWT", 'completed': false },
+    { 'id': 4, 'user_id': 4, 'name': "Finish Angular JWT Todo App", 'completed': false },
 ];
 var USERS = [
     { 'id': 1, 'username': 'jemma@email.com' },
@@ -47,7 +48,6 @@ app.get('/', function (req, res) {
 
 app.get('/api/todos', function (req, res) {
     res.type("json");
-    //res.send(getTodos(1));
     res.send(getTodos(req.user.userID));
 });
 app.get('/api/todos/:id', function (req, res) {
