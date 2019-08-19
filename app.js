@@ -4,6 +4,7 @@ const app = express()
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
+const cors = require('cors')
 
 var port = process.env.PORT || 3000;
 var favicon = require('serve-favicon')
@@ -35,6 +36,7 @@ function getUsers() {
     return USERS;
 }
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/api/auth']}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
